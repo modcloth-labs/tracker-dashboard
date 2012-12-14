@@ -1,0 +1,39 @@
+{
+  "projects": [
+    {
+      "id": "592701",
+      "name": "Community",
+      "epics": [
+        "ie9", "photo upload", "monitoring", "products refactor", "continuous deployment", "e-comm", "ux", "analytics"
+      ]
+    },
+    {
+      "id": "630731",
+      "name": "iOS App",
+      "epics": [
+        "bag", "ipad", "iphone", "p3", "visuals", "api", "release_12.046", "gang", "wishlist", "sort/filter", "menu", "blocked", "jingting accept", "my account", "release_12.043", "ecomm", "release_12.041", "pdp", "lovelist", "grid", "authentication", "checkout", "feature blocked", "integration test", "notifications service"
+      ]
+    },
+    {
+      "id": "154423",
+      "name": "Platform",
+      "epics": [
+        "chef", "infrastructure", "utf-8 conversion", "monitoring", "sphere support"
+      ]
+    },
+    {
+      "id": "252853",
+      "name": "Social Shopping",
+      "epics": [
+        "code winter", "style gallery pdp integration", "rails 3 upgrade"
+      ]
+    },
+    {
+      "id": "154407",
+      "name": "Supply",
+      "epics": [
+        "replenishment", "vendor cleanup", "oracle", "oracle data migration"
+      ]
+    }
+  ]
+}
