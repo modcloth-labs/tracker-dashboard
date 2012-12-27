@@ -1,3 +1,7 @@
+use Rack::Auth::Basic, "Restricted" do |username, password|
+  { 'winston' => 'we<3bluetoo!' }[username] == password
+end
+
 module TrackerDashboard
   class Application
     
