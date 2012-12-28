@@ -15,6 +15,37 @@ module TrackerDashboard
   end
   
   class DataLoad
+    
+    def self.progress_hash
+      { unstarted: 0, started: 0, finished: 0, delivered: 0, rejected: 0, accepted: 0 }
+    end
+    
+    def self.iteration_hash( iteration )
+      {
+        start: iteration.start, 
+        finish: iteration.finish
+      }
+    end
+    
+    def self.story_hash( story )
+      {
+        id: story.id,
+        name: story.name,
+        story_type: story.story_type,
+        current_state: story.current_state
+      }
+    end
+    
+    def self.project_hash( project, epics, progress_hash, iteration_hash )
+      {
+        id: project.id,
+        name: project.name,
+        progress: progress_hash,
+        iteration: iteration_hash,
+        epics: epics
+      }
+    end
+    
     def self.execute
       credentials = TrackerDashboard::JSON.get( 'credentials' )
       token = PivotalTracker::Token.get( credentials['username'], credentials['password'] )
@@ -27,29 +58,13 @@ module TrackerDashboard
         labels = p['epics'].push( 'uncategorized' )
         epics = labels.map { |e| { name: e, progress: {}, stories: [] } }
         
-        progress_hash = {
-          unstarted: 0,
-          started: 0,
-          finished: 0,
-          delivered: 0,
-          rejected: 0,
-          accepted: 0
-        }
-        
-        iteration_hash = {
-          start: iteration.start,
-          finish: iteration.finish
-        }
+        progress_hash = TrackerDashboard::DataLoad.progress_hash
+        iteration_hash = TrackerDashboard::DataLoad.iteration_hash( iteration )
         
         iteration.stories.each do |story|
           next if story.story_type == 'release'
           
-          story_hash = {
-            id: story.id,
-            name: story.name,
-            story_type: story.story_type,
-            current_state: story.current_state
-          }
+          story_hash = TrackerDashboard::DataLoad.story_hash( story )
           
           progress_hash[story.current_state.to_sym] += 1
           
@@ -68,15 +83,7 @@ module TrackerDashboard
           end
         end
         
-        project_hash = {
-          id: project.id,
-          name: project.name,
-          progress: progress_hash,
-          iteration: iteration_hash,
-          epics: epics
-        }
-        
-        data[:projects] << project_hash
+        data[:projects] << TrackerDashboard::DataLoad.project_hash( project, epics, progress_hash, iteration)
       end
       
       File.open( "#{File.dirname( __FILE__ )}/../data/projects.json", "w" ) do |f|
