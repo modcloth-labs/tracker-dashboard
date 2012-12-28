@@ -7,7 +7,7 @@ var trackerDashboard = {
       url: "data/projects.json", 
       dataType: 'json',
       async: false,
-      success: function(data) {
+      success: function( data ) {
         trackerDashboard.renderProjects( data.projects );
       }
     });
@@ -65,26 +65,27 @@ var trackerDashboard = {
     
     _.each( project.epics, function( epic, index ) {
       
-      epic_id = '' + project.id + '-' + index + '';
-      
-      html += '\
-        <div class="accordion" id="epic-' + epic_id + '">\
-          <div class="accordion-group">\
-            <div class="accordion-heading">\
-              <a class="accordion-toggle" data-toggle="collapse" data-parent="epic-' + epic_id + '" href="#stories-' + epic_id + '">\
-                <p class="lead">' + epic.name + '</p>\
-              </a>\
-            </div>\
-            <div class="stats-inner" id="stats-' + epic_id + '">\
-              ' + trackerDashboard.renderEpicStats( epic ) + '\
-            </div>\
-            <div id="stories-' + epic_id + '" class="accordion-body collapse">\
-              <div class="accordion-inner">\
-                ' + trackerDashboard.renderEpicStories( epic ) + '\
+      if ( epic.stories.length > 0 ) {
+        epic_id = '' + project.id + '-' + index + '';
+        html += '\
+          <div class="accordion" id="epic-' + epic_id + '">\
+            <div class="accordion-group">\
+              <div class="accordion-heading">\
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="epic-' + epic_id + '" href="#stories-' + epic_id + '">\
+                  <p class="lead">' + epic.name + '</p>\
+                </a>\
+              </div>\
+              <div class="stats-inner" id="stats-' + epic_id + '">\
+                ' + trackerDashboard.renderEpicStats( epic ) + '\
+              </div>\
+              <div id="stories-' + epic_id + '" class="accordion-body collapse">\
+                <div class="accordion-inner">\
+                  ' + trackerDashboard.renderEpicStories( epic ) + '\
+                </div>\
               </div>\
             </div>\
-          </div>\
-        </div>';
+          </div>';
+      }
     });
     
     return html;
