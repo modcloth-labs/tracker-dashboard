@@ -1,14 +1,16 @@
-require './pivotal_tracker/iteration'
-require './pivotal_tracker/project'
-require './pivotal_tracker/story'
-require './pivotal_tracker/token'
+Dir.glob( "#{File.dirname( File.absolute_path __FILE__ )}/pivotal_tracker/*", &method( :require ) )
+
 require 'yajl'
 
 module TrackerDashboard
   
   class JSON
     def self.get( name )
-      Yajl::Parser.parse( File.open( File.expand_path( "config/#{name}.json" ) ) ).fetch( name )
+      Yajl::Parser.parse( TrackerDashboard::JSON.open_file name ).fetch( name )
+    end
+    
+    def self.open_file( name)
+      File.open( "#{File.dirname __FILE__}/config/#{name}.json" )
     end
   end
   
@@ -75,7 +77,7 @@ module TrackerDashboard
         data[:projects] << project_hash
       end
       
-      File.open( "#{File.dirname(__FILE__)}/../data/projects.json", "w" ) do |f|
+      File.open( "#{File.dirname( __FILE__ )}/../data/projects.json", "w" ) do |f|
         f.write( Yajl::Encoder.encode( data ) )
       end
     end

@@ -1,9 +1,0 @@
-task default: [ :spec ]
-
-task :load do
-  ruby 'tracker_dashboard.rb'
-end
-
-task :spec do
-  
-end
