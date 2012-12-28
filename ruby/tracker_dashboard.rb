@@ -42,6 +42,8 @@ module TrackerDashboard
         }
         
         iteration.stories.each do |story|
+          next if story.story_type == 'release'
+          
           story_hash = {
             id: story.id,
             name: story.name,
