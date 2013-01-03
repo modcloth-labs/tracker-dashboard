@@ -9,7 +9,7 @@
     },
     {
       "id": "630731",
-      "name": "iOS App",
+      "name": "Native Apps",
       "epics": [
         "api", "ipad1.0", "iphone1.0", "authentication", "notifications service"
       ]
@@ -33,6 +33,13 @@
       "name": "Supply",
       "epics": [
         "replenishment", "vendor cleanup", "oracle", "oracle data migration"
+      ]
+    },
+    {
+      "id": "93300",
+      "name": "Services",
+      "epics": [
+        "identity service", "notifications service"
       ]
     }
   ]
