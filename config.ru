@@ -1,11 +1,11 @@
 require 'dalli'
-require File.expand_path('../ruby/tracker_dashboard', __FILE__)
+require File.expand_path('../lib/tracker_dashboard', __FILE__)
 
 module TrackerDashboard
   class Static
     def call( env )
       env['PATH_INFO'] = "/index.html" if env['PATH_INFO'] == "/"
-      Rack::File.new( Dir.pwd ).call( env )
+      Rack::File.new( File.expand_path('../public', __FILE__) ).call( env )
     end
   end
 
