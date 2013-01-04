@@ -131,3 +131,32 @@ table.wrap td {
   padding: 5px 10px;
   white-space: normal;
 }
+
+.stories {
+  margin-bottom: 0;
+}
+
+.stories .started td {
+  background-color: #F7E8FC;
+/*  color: #150042;*/
+}
+
+.stories .finished td {
+  background-color: #E8FBFC;
+/*  color: #004A67;*/
+}
+
+.stories .delivered td {
+  background-color: #FCFCE8;
+/*  color: #B98A00;*/
+}
+
+.stories .accepted td {
+  background-color: #EFFCE8;
+/*  color: #5E7C00;*/
+}
+
+.stories .rejected td {
+  background-color: #FCE8E8;
+/*  color: #8F0C13;*/
+}

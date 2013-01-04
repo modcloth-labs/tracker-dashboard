@@ -92,13 +92,13 @@ var trackerDashboard = {
   },
   
   renderEpicStories: function( epic ) {
-    var html = '<table class="table wrap">';
+    var html = '<table class="table wrap stories">';
     
     _.each( epic.stories, function( story ) {
       html += '\
-        <tr>\
+        <tr class="' + story.current_state +  '">\
           <td width="10%">\
-            ' + story.story_type.charAt( 0 ).toUpperCase() + '\
+            <i class="' + trackerDashboard.iconClassFor( story.story_type ) + '">\
           </td>\
           <td width="90%">\
             ' + story.name + '\
@@ -118,8 +118,16 @@ var trackerDashboard = {
     });
     
     return html;
-  }
+  },
 
+  iconClassFor: function(storyType) {
+    var storyChar = storyType.charAt( 0 ).toUpperCase();
+    return {
+      'B' : 'icon-fire',
+      'C' : 'icon-wrench',
+      'F' : 'icon-star'
+    }[storyChar];
+  }
 }
 
 $(document).ready(function() {
