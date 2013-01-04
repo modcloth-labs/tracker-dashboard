@@ -83,7 +83,7 @@ module TrackerDashboard
           end
         end
 
-        data[:projects] << TrackerDashboard::DataLoad.project_hash( project, epics, progress_hash, iteration)
+        data[:projects] << TrackerDashboard::DataLoad.project_hash( project, epics, progress_hash, iteration_hash)
       end
 
       Yajl::Encoder.encode( data )
