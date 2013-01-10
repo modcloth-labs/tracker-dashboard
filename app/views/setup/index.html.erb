@@ -32,9 +32,9 @@
           <%= pform.object.name %>
         <% end %>
         <section class='labels' style='margin-left: 100px; <%= pform.object.enabled? ? '' : 'display: none;' %>'>
-          <%= pform.label :enabled_labels_list, "Important Labels:" %>
+          <em><%= pform.label :enabled_labels_list, "Important Labels:" %></em>
           <% pform.object.all_labels_list.each_with_index do |label_name, idx| %>
-            <label class="inline" id="label_proj_<%= pform.object.id %>_<%= idx %>">
+            <label class="inline checkbox-list" id="label_proj_<%= pform.object.id %>_<%= idx %>">
               <%= pform.check_box(:enabled_labels_list, {:multiple => true, :id => "label_proj_#{pform.object.id}_#{idx}", :checked => pform.object.enabled_labels_list.include?(label_name)}, label_name, "" ) %>
               <%= label_name %>
             </label>

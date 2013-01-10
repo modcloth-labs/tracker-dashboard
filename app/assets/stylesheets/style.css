@@ -166,3 +166,12 @@ table.wrap td {
 .field_with_errors input {
   background-color: #ffcccc;
 }
+
+.checkbox-list {
+  float: left;
+  margin-right: 10px;
+}
+
+.project {
+  overflow: hidden;
+}
