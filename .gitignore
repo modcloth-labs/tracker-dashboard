@@ -15,3 +15,7 @@
 /tmp
 
 /.idea
+/Gemfile.lock
+/manifest.yml
+/public/assets
+/vendor/cache

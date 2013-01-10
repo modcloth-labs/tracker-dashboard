@@ -9,10 +9,15 @@ gem 'nokogiri'
 gem 'rest-client'
 gem 'thin'
 gem 'yajl-ruby'
-gem 'dalli'
 
+
+gem 'mysql2'
 gem 'sqlite3'
 
+if File.exist?(File.dirname(__FILE__) + "/manifest.yml") || ENV["VCAP_SERVICES"]
+  puts "Detected cloudfoundry, adding gem to bundle"
+  gem 'cloudfoundry-jquery-rails'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

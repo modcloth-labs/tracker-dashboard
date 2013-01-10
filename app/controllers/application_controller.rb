@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def cache
-    @cache ||= Dalli::Client.new
-  end
-
   def require_credentials
     @credentials = Credentials.first
     redirect_to setup_path unless @credentials

@@ -1,7 +1,3 @@
 task :load => :environment do
-  require 'dalli'
-  require 'tracker_dashboard'
-
-  cache = Dalli::Client.new
-  cache.set 'data.projects.json', TrackerDashboard::DataLoad.fetch
+  Parameter.find_or_initialize_by_name('data.projects.json').update_attributes!(:value => TrackerDashboard::DataLoad.fetch)
 end

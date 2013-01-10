@@ -51,7 +51,7 @@ module TrackerDashboard
       data = { projects: [] }
 
       Project.where(:enabled => true).each do |proj|
-        puts "Getting project #{proj.tracker_id}, token #{token}"
+        puts "Getting project #{proj.tracker_id}"
         project = PivotalTracker::Project.get( token, proj.tracker_id )
         iteration = PivotalTracker::Iteration.get( token, proj.tracker_id )
 

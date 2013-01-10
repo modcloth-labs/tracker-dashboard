@@ -6,16 +6,17 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json do
-        json = cache.fetch('data.projects.json') do
-                  TrackerDashboard::DataLoad.fetch
-                end
-        render :json => json
+        data = Parameter.find_or_initialize_by_name('data.projects.json')
+        if data.new_record?
+          data.update_attributes!(:value => TrackerDashboard::DataLoad.fetch)
+        end
+        render :json => data.value
       end
     end
   end
 
   def update
-    cache.set( 'data.projects.json', TrackerDashboard::DataLoad.fetch )
+    Parameter.find_or_initialize_by_name('data.projects.json').update_attributes!(:value => TrackerDashboard::DataLoad.fetch)
     redirect_to('/')
   end
 end
