@@ -9,6 +9,7 @@ gem 'nokogiri'
 gem 'rest-client'
 gem 'thin'
 gem 'yajl-ruby'
+gem 'handlebars_assets'
 
 
 gem 'mysql2'

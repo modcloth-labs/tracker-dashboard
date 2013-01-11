@@ -56,7 +56,8 @@ module TrackerDashboard
         iteration = PivotalTracker::Iteration.get( token, proj.tracker_id )
 
         labels = proj.enabled_labels_list.push( 'uncategorized' )
-        epics = labels.map { |e| { name: e, progress: {}, stories: [] } }
+        i = 0
+        epics = labels.map { |e| { name: e, progress: {}, stories: [], epic_id: "#{project.id}-#{i+=1}" } }
 
         progress_hash = TrackerDashboard::DataLoad.progress_hash
         iteration_hash = TrackerDashboard::DataLoad.iteration_hash( iteration )
