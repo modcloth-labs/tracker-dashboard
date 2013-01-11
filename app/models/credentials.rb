@@ -8,11 +8,14 @@ class Credentials < ActiveRecord::Base
   accepts_nested_attributes_for :projects
 
   def fetch_projects
+    dead_projects = Project.all
     PivotalTracker::Project.all(token).each do |proj|
       project = projects.find_or_create_by_tracker_id(proj.id)
       project.name = proj.name
       project.all_labels = proj.labels
       project.save!
+      dead_projects.delete(project)
     end
+    dead_projects.map &:destroy
   end
 end
