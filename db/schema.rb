@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110154848) do
+ActiveRecord::Schema.define(:version => 20130112044519) do
 
   create_table "credentials", :force => true do |t|
     t.string   "token"
@@ -20,6 +20,38 @@ ActiveRecord::Schema.define(:version => 20130110154848) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "iterations", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "number"
+    t.datetime "start"
+    t.datetime "finish"
+    t.string   "kind"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "iterations", ["project_id", "kind"], :name => "index_iterations_on_project_id_and_kind"
+
+  create_table "labelings", :force => true do |t|
+    t.integer  "story_id"
+    t.integer  "project_id"
+    t.integer  "label_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "labelings", ["label_id"], :name => "index_labelings_on_label_id"
+  add_index "labelings", ["project_id"], :name => "index_labelings_on_project_id"
+  add_index "labelings", ["story_id"], :name => "index_labelings_on_story_id"
+
+  create_table "labels", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "labels", ["name"], :name => "index_labels_on_name"
 
   create_table "parameters", :force => true do |t|
     t.string   "name"
@@ -38,5 +70,24 @@ ActiveRecord::Schema.define(:version => 20130110154848) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
+
+  create_table "stories", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "iteration_id"
+    t.integer  "estimate"
+    t.string   "name"
+    t.string   "tracker_id"
+    t.string   "url"
+    t.string   "current_state"
+    t.string   "story_type"
+    t.string   "requested_by"
+    t.string   "owned_by"
+    t.string   "labels"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "stories", ["iteration_id"], :name => "index_stories_on_iteration_id"
+  add_index "stories", ["project_id"], :name => "index_stories_on_project_id"
 
 end
