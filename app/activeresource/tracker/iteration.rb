@@ -18,9 +18,11 @@ module Tracker
         # create story records
         i.stories = stories.map do |s|
           ::Story.new.tap do |story|
-            Tracker::Iteration::Story.schema.except("description").keys.each do |key|
+            Tracker::Iteration::Story.schema.except("description", "labels", "created_at").keys.each do |key|
               story.send("#{key}=", s.send(key))
             end
+            story.tracker_labels = s.labels
+            story.tracker_created_at = s.created_at
             story.project = record_project
             story.created_at = s.created_at
             story.updated_at = s.updated_at

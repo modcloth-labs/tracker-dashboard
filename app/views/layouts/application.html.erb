@@ -16,7 +16,7 @@
     <h3>ModCloth Tracker Dashboard</h3>
   </header>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id="root">
     <div class="navbar">
       <div class="navbar-inner">
         <ul class="nav">
@@ -29,6 +29,13 @@
         </ul>
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
+          <li>
+            <select class="metric">
+              <option value="points">Points</option>
+              <option value="pseudoPoints">Pseudo-Points</option>
+              <option value="length">Story Count</option>
+            </select>
+          </li>
           <li><a href="/setup">Setup</a></li>
           <li class="divider-vertical"></li>
           <li><a href="/update">Update Data</a></li>

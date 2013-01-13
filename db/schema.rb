@@ -82,9 +82,10 @@ ActiveRecord::Schema.define(:version => 20130112044519) do
     t.string   "story_type"
     t.string   "requested_by"
     t.string   "owned_by"
-    t.string   "labels"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.string   "tracker_labels"
+    t.datetime "tracker_created_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   add_index "stories", ["iteration_id"], :name => "index_stories_on_iteration_id"

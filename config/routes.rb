@@ -61,6 +61,8 @@ TrackerDashboard::Application.routes.draw do
   post 'setup' => "setup#update"
   get 'update' => "projects#update"
 
+  resources :projects, :only => :index
+
   #get "/update" do
   #  cache.set( 'data.projects.json', TrackerDashboard::DataLoad.fetch )
   #  redirect to('/')

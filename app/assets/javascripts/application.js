@@ -13,6 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require underscore
 //= require handlebars.runtime
+//= require underscore
+//= require backbone
+//= require backbone_rails_sync
+//= require backbone_datalink
+//= require backbone-relational
+//= require backbone_extensions/include
+//= require backbone_extensions/decorator
+//= require backbone_extensions/associations
+
+
+//= require_tree ./templates
+//= require backbone/tracker_dashboard
 //= require_tree .

@@ -9,10 +9,10 @@ class Credentials < ActiveRecord::Base
 
   def fetch_projects
     dead_projects = Project.all
-    PivotalTracker::Project.all(token).each do |proj|
+    Tracker::Project.all.each do |proj|
       project = projects.find_or_create_by_tracker_id(proj.id)
       project.name = proj.name
-      project.all_labels = proj.labels
+      project.all_labels = proj.labels.downcase
       project.save!
       dead_projects.delete(project)
     end

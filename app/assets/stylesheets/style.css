@@ -175,3 +175,7 @@ table.wrap td {
 .project {
   overflow: hidden;
 }
+
+select.metric {
+  margin-top: 5px;
+}

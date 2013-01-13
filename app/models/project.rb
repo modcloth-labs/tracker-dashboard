@@ -1,8 +1,27 @@
 class Project < ActiveRecord::Base
   attr_accessible :tracker_id, :enabled, :name, :enabled_labels, :enabled_labels_list, :all_labels
-  has_many :iterations, :dependent => :delete_all
+  has_many :iterations, :dependent => :delete_all, :order => :number
   has_many :stories, :dependent => :delete_all
   has_many :labelings, :dependent => :delete_all
+  has_many :labels, :through => :labelings
+
+  scope :enabled, where(:enabled => true)
+
+  def self.fetch!
+    Project.enabled.each do |proj|
+      begin
+        proj.fetch!
+      rescue
+        puts "Unable to fetch project #{proj.id}: #{$!}"
+        puts $!.backtrace.join("\n\t")
+        raise
+      end
+    end
+  end
+
+  def enabled_label_ids
+    enabled_labels_list.any? ? Label.where(:name => enabled_labels_list).collect(&:id) : []
+  end
 
   def enabled_labels_list
     enabled_labels.split(",").map(&:strip)
@@ -14,18 +33,6 @@ class Project < ActiveRecord::Base
 
   def all_labels_list
     all_labels.split(",").map(&:strip)
-  end
-
-  def self.fetch!
-    Project.where(:enabled => true).each do |proj|
-      begin
-        proj.fetch!
-      rescue
-        puts "Unable to fetch project #{proj.id}: #{$!}"
-        puts $!.backtrace.join("\n\t")
-        raise
-      end
-    end
   end
 
   def fetch!
@@ -41,6 +48,7 @@ class Project < ActiveRecord::Base
       iters.each do |i|
         i.to_iter(self).save!
       end
+      self.touch
     end
 
     iterations.reload

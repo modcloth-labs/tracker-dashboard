@@ -11,7 +11,9 @@ class CreateStories < ActiveRecord::Migration
       t.string :story_type
       t.string :requested_by
       t.string :owned_by
-      t.string :labels
+      t.string :tracker_labels
+
+      t.datetime :tracker_created_at
 
       t.timestamps
     end
