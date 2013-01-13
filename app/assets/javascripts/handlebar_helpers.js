@@ -28,11 +28,11 @@ Handlebars.registerHelper('iconClassFor', function(storyType) {
 
 Handlebars.registerHelper('stateBadge', function(stateName) {
   var metricName = app.get('metric');
-  if(this[stateName] && this[stateName].length > 3)
-  console.log(stateName, this[stateName][metricName]);
   return new Handlebars.SafeString(
           this[stateName]
-                  ? '<span class="badge badge-' + stateName + '">' + this[stateName][metricName] + '</span>'
+                  ? '<span class="badge badge-' + stateName + '">' +
+                    Math.round(this[stateName][metricName]) +
+                    '</span>'
                   :""
   );
 });

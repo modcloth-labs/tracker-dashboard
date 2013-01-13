@@ -5,8 +5,7 @@ class TrackerDashboard.Router extends Backbone.Router
     @appView = new TrackerDashboard.Views.AppView(app: @app, el: $("#root"))
 
   routes:
-    "projects"  : "index",
-    ".*"        : "index"
+    "projects"  : "index"
 
   index: ->
     @app.fetch().then =>

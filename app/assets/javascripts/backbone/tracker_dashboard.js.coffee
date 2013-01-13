@@ -23,5 +23,6 @@ _.extend TrackerDashboard.Model, Backbone.extensions.include
 
 $ ->
   window.router = new TrackerDashboard.Router()
-  Backbone.history.start()
+  Backbone.history.start
+    pushState: true
 
