@@ -1,7 +1,7 @@
 {{#projects}}
   <td id="project-{{id}}" width="{{../cellWidth}}%" nowrap>
+    {{> _projects_header}}
     {{#currentIteration}}
-      {{> _projects_header}}
       {{> _projects_progress}}
       {{> _projects_epics}}
     {{/currentIteration}}
