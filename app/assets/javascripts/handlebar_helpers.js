@@ -12,6 +12,11 @@ Handlebars.registerHelper('metricValue', function(metrics) {
 });
 
 
+Handlebars.registerHelper('metricName', function() {
+  return app.get('metric');
+});
+
+
 Handlebars.registerHelper('formatDate', function(finishDate) {
   return ( finishDate.getMonth() + 1 ) + '/' + finishDate.getDate() + '/' + finishDate.getFullYear();
 });

@@ -118,6 +118,14 @@ p.lead {
   margin-top: -5px;
 }
 
+.detail-stats {
+  color: #666;
+  font-size: 11px;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
 .stats-inner {
   background-color: #F2F2F2;
   margin-top: -5px;

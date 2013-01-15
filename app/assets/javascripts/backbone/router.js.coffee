@@ -1,6 +1,8 @@
 class TrackerDashboard.Router extends Backbone.Router
   initialize: (options = {}) ->
     @app = new TrackerDashboard.App()
+    @app.set('metric', $.cookie('metric')) if $.cookie('metric')
+
     window.app = @app
     @appView = new TrackerDashboard.Views.AppView(app: @app, el: $("#root"))
     @app.fetch().then =>

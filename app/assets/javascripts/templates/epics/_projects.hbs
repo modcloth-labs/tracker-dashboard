@@ -1,5 +1,4 @@
 {{#projects}}
-  {{consoleLog}}
   <div class="accordion" id="epic-{{project/id}}-{{epic_id}}">
     <div class="accordion-group">
       <div class="accordion-heading">
@@ -8,6 +7,9 @@
         </a>
       </div>
       <div class="stats-inner" id="stats-{{project/id}}-{{epic_id}}">
+        <div class="detail-stats">
+          Estimated finish: {{formatDate finish}}
+        </div>
         {{> _shared_stats }}
       </div>
       <div id="stories-{{project/id}}-{{epic_id}}" class="accordion-body collapse">
