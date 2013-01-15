@@ -5,6 +5,13 @@ Handlebars.registerHelper('progressWidth', function(metrics) {
   return 100.0 * (metrics[metricName] || 0) / total;
 });
 
+Handlebars.registerHelper('metricValue', function(metrics) {
+  var metricName = app.get('metric');
+  metrics = metrics || {};
+  return metrics[metricName] || 0;
+});
+
+
 Handlebars.registerHelper('formatDate', function(finishDate) {
   return ( finishDate.getMonth() + 1 ) + '/' + finishDate.getDate() + '/' + finishDate.getFullYear();
 });

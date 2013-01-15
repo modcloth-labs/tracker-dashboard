@@ -60,6 +60,7 @@ TrackerDashboard::Application.routes.draw do
   get 'setup' => "setup#index"
   post 'setup' => "setup#update"
   get 'update' => "projects#update"
+  get 'epics' => "projects#index"
 
   resources :projects, :only => :index
 

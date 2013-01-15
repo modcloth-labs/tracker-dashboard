@@ -1,0 +1,21 @@
+{{#metrics}}
+  {{#byState}}
+    <div class="progress progress-striped active">
+      <div class="bar bar-accepted" style="width: {{progressWidth accepted}}%;">
+          <span class="value">{{metricValue accepted}}</span>
+      </div>
+      <div class="bar bar-delivered" style="width: {{progressWidth delivered}}%;">
+        <span class="value">{{metricValue delivered}}</span>
+      </div>
+      <div class="bar bar-finished" style="width: {{progressWidth finished}}%;">
+        <span class="value">{{metricValue finished}}</span>
+      </div>
+      <div class="bar bar-rejected" style="width: {{progressWidth rejected}}%;">
+        <span class="value">{{metricValue rejected}}</span>
+      </div>
+      <div class="bar bar-started" style="width: {{progressWidth started}}%;">
+        <span class="value">{{metricValue started}}</span>
+      </div>
+    </div>
+  {{/byState}}
+{{/metrics}}

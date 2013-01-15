@@ -20,10 +20,12 @@
     <div class="navbar">
       <div class="navbar-inner">
         <ul class="nav">
-          <li <%= @active_tab == 'projects' ? 'class="active"' : ''%>>
+          <li <%= request.url.include?('projects') ? 'class="active"'.html_safe : ''%>>
             <a href="/projects">Projects</a>
           </li>
-          <li><a href="#">Epics</a></li>
+          <li <%= request.url.include?('epics') ? 'class="active"'.html_safe : ''%>>
+            <a href="/epics">Epics</a>
+          </li>
           <li><a href="#">Releases</a></li>
           <li><a href="#">People</a></li>
         </ul>

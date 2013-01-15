@@ -1,0 +1,20 @@
+{{#projects}}
+  {{consoleLog}}
+  <div class="accordion" id="epic-{{project/id}}-{{epic_id}}">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="epic-{{project/id}}-{{epic_id}}" href="#stories-{{project/id}}-{{epic_id}}">
+          <p class="lead">{{project/name}}</p>
+        </a>
+      </div>
+      <div class="stats-inner" id="stats-{{project/id}}-{{epic_id}}">
+        {{> _shared_stats }}
+      </div>
+      <div id="stories-{{project/id}}-{{epic_id}}" class="accordion-body collapse">
+        <div class="accordion-inner">
+          {{> _shared_stories }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/projects}}

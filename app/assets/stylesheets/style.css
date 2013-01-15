@@ -87,6 +87,11 @@ p.lead {
   text-transform: capitalize;
 }
 
+.progress-striped .bar {
+  overflow: hidden;
+  font-size: 9px;
+}
+
 .progress-striped .bar-started {
   background-color: #452B72;
 }
@@ -178,4 +183,6 @@ table.wrap td {
 
 select.metric {
   margin-top: 5px;
+  margin-bottom: 5px;
 }
+

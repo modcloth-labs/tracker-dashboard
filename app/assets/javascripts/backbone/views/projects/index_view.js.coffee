@@ -14,4 +14,4 @@ class TrackerDashboard.Views.Projects.IndexView extends Backbone.View
         self.$el.html self.template(json)
         return this
 
-    @app.on('change', @render)
+    @listenTo(@app, 'change', @render)

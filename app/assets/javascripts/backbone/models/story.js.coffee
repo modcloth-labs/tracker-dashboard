@@ -1,7 +1,14 @@
 TrackerDashboard.Story = TrackerDashboard.Model.extend(
   paramRoot: 'story'
+  app: ->
+    @get('project').app()
   project: ->
     @get('project')
+  iteration: ->
+    @_iteration ||= (app.projects().chain().map (project) =>
+      project.iterations().detect (iter) =>
+        _.contains iter.get('story_ids'), @id
+    ).compact().first().value()
   labels: ->
     _.map @get('label_ids'), (labelId) =>
       @project().labels().get(labelId)
@@ -26,6 +33,12 @@ TrackerDashboard.Stories = Backbone.Collection.extend(
     @reduce( (total, story) =>
       total += if story.get('estimate') < 1 then 0.25 else story.get('estimate')
     , 0)
+
+  latest: ->
+    _.last(
+      @sortBy (story) =>
+        story.get('finish')
+    )
 
   toJSON: ->
     byState = {}
