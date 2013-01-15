@@ -28,7 +28,7 @@ TrackerDashboard.Iteration = TrackerDashboard.Model.extend(
 
   toJSON: ->
     epicsJSON = _.map @enabledLabelStories(), (stories,labelId) =>
-      label: (@project().labels().get(labelId) || {toJSON: -> {name: 'uncategorized'}}).toJSON(),
+      label: (@project().labels().get(labelId) || {toJSON: => {name: 'uncategorized', id: 'uncat-'+@project().id}}).toJSON(),
       stories: stories.toJSON()
 
     _.extend TrackerDashboard.Model.prototype.toJSON.apply(this, arguments),
