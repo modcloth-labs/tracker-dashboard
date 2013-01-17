@@ -21,6 +21,6 @@ class ProjectsController < ApplicationController
 
   def update
     Project.fetch!
-    redirect_to('/')
+    redirect_to :back
   end
 end

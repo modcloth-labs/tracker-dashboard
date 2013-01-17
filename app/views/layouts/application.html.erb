@@ -26,11 +26,18 @@
           <li <%= request.url.include?('epics') ? 'class="active"'.html_safe : ''%>>
             <a href="/epics">Epics</a>
           </li>
-          <li><a href="#">Releases</a></li>
+          <li <%= request.url.include?('releases') ? 'class="active"'.html_safe : ''%>>
+            <a href="/releases">Releases</a>
+          </li>
           <li><a href="#">People</a></li>
         </ul>
         <ul class="nav pull-right">
           <li class="divider-vertical"></li>
+          <li>
+            <label class="checkbox">
+              <input type="checkbox" class="filter_tiny_items"> Filter Tiny Items
+            </label>
+          </li>
           <li>
             <select class="metric">
               <option value="points">Points</option>

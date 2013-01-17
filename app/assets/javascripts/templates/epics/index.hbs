@@ -1,9 +1,11 @@
 {{#epics}}
-  <td id="epic-{{labels/id}}" width="{{../cellWidth}}%" nowrap>
-    {{> _epics_header}}
-    {{#total}}
-      {{> _shared_progress}}
-    {{/total}}
-    {{> _epics_projects}}
-  </td>
+  {{#unless filtered}}
+    <td id="epic-{{labels/id}}" width="{{../cellWidth}}%" nowrap>
+      {{> _epics_header}}
+      {{#total}}
+        {{> _shared_progress}}
+      {{/total}}
+      {{> _epics_projects}}
+    </td>
+  {{/unless}}
 {{/epics}}

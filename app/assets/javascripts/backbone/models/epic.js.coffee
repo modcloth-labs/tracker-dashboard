@@ -32,6 +32,7 @@ TrackerDashboard.Epics = Backbone.Collection.extend(
       label: @labels().get(labelId).toJSON()
       total: v.total.toJSON()
       finish: latest && latest.iteration().get('finish')
+      filtered: @app.get('filter_tiny_items') && _.size(v.projects) <= 1
       projects: _.map(v.projects, (stories,projectId) =>
         l = stories.latest()
         project: @projects().get(projectId).toJSON()

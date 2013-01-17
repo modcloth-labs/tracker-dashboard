@@ -8,7 +8,7 @@ Handlebars.registerHelper('progressWidth', function(metrics) {
 Handlebars.registerHelper('metricValue', function(metrics) {
   var metricName = app.get('metric');
   metrics = metrics || {};
-  return metrics[metricName] || 0;
+  return Math.round(metrics[metricName] || 0);
 });
 
 
@@ -36,6 +36,13 @@ Handlebars.registerHelper('iconClassFor', function(storyType) {
     'C' : 'icon-wrench',
     'F' : 'icon-star'
   }[storyChar];
+});
+
+Handlebars.registerHelper('eachState', function(options) {
+  var self = this;
+  return _.map(["accepted", "delivered", "finished", "rejected", "started"], function(state) {
+    return self[state] ? options.fn({name: state, value: self[state]}) : "";
+  }).join("");
 });
 
 Handlebars.registerHelper('stateBadge', function(stateName) {

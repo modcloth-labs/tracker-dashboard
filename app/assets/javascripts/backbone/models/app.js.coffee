@@ -3,6 +3,7 @@ TrackerDashboard.App = TrackerDashboard.Model.extend(
   url: '/projects'
   defaults:
     metric: 'points'
+    filter_tiny_items: false
   relations: [
     {
     type: Backbone.HasMany,
@@ -32,12 +33,18 @@ TrackerDashboard.App = TrackerDashboard.Model.extend(
     _.map @enabledLabels(), (label) =>
       epics.add(new TrackerDashboard.Epic({label: label, app: this}), silent: true);
     epics
+  releases: ->
+    releases = new TrackerDashboard.Releases([], app: this)
+    _.each @stories(), (story) =>
+      if story.get('story_type') == 'release' && story.get('current_state') == 'unstarted'
+        releases.add({id: story.get('name'), app: this}, silent: true);
+        releases.get(story.get('name')).get('stories').add(story)
+    releases
+
   enabledLabels: ->
     @projects().chain().invoke('enabledLabels').flatten().uniq().value()
   stories: ->
-    _.flatten(
-      @projects().map (proj) => proj.stories()
-    )
+    @projects().chain().invoke('stories').pluck('models').flatten().value()
   toJSON: ->
     projects: @projects().toJSON()
 )
