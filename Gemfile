@@ -12,13 +12,9 @@ gem 'yajl-ruby'
 gem 'handlebars_assets'
 
 
-gem 'mysql2'
-gem 'sqlite3'
+# DATABASE ADAPTERS, uncomment 1 of these below:
+# gem 'pg'
 
-if File.exist?(File.dirname(__FILE__) + "/manifest.yml") || ENV["VCAP_SERVICES"]
-  puts "Detected cloudfoundry, adding gem to bundle"
-  gem 'cloudfoundry-jquery-rails'
-end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,6 +26,18 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  # you can comment out any of these you aren't using
+  gem 'sqlite3'
+  gem 'cloudfoundry-jquery-rails'
+end
+
+group :production do
+  # you can comment out any of these you aren't using
+  gem 'mysql2'
+  gem 'pg'
 end
 
 gem 'jquery-rails'

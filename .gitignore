@@ -15,7 +15,6 @@
 /tmp
 
 /.idea
-/Gemfile.lock
 /manifest.yml
 /public/assets
 /script/cfpush
