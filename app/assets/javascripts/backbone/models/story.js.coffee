@@ -37,7 +37,7 @@ TrackerDashboard.Stories = Backbone.Collection.extend(
   latest: ->
     _.last(
       @sortBy (story) =>
-        story.get('finish')
+        story.iteration().get('finish')
     )
 
   toJSON: ->

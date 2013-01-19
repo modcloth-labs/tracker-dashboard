@@ -1,1 +1,1 @@
-rvm use 1.9.3@trackerdash
+rvm use 1.9.3@trackerdash --create
