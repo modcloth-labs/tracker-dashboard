@@ -49,9 +49,12 @@ simply figure out how to schedule running the following task as often as you wan
 
 	bundle exec rake load
 
-This will fetch new data from the tracker API and put it in the relational database.
+This will fetch new data from the tracker API and put it in the relational database. If you
+deploy on heroku, you can use the following addon to schedule tasks:
 
+	heroku addons:add scheduler
+	heroku addons:open scheduler
 
 ### Credits
-Written by Luis Flores, David Stevenson, and Sanford Redlich.
+Written by Luis Flores, David Stevenson, Ben Marini, and Sanford Redlich.
 Please fork this application and enhance it to fit your needs.
