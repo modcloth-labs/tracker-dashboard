@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :tracker_id, :enabled, :name, :enabled_labels, :enabled_labels_list, :all_labels
+  attr_accessible :tracker_id, :enabled, :name, :enabled_labels, :enabled_labels_list, :all_labels, :current_velocity
   has_many :iterations, :dependent => :delete_all, :order => :number
   has_many :stories, :dependent => :delete_all
   has_many :labelings, :dependent => :delete_all
@@ -48,7 +48,7 @@ class Project < ActiveRecord::Base
       iters.each do |i|
         i.to_iter(self).save!
       end
-      self.touch
+      self.update_attributes!(:current_velocity => tracker_proj.current_velocity)
     end
 
     iterations.reload

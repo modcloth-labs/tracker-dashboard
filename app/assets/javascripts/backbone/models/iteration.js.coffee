@@ -32,7 +32,7 @@ TrackerDashboard.Iteration = TrackerDashboard.Model.extend(
       stories: stories.toJSON()
 
     _.extend TrackerDashboard.Model.prototype.toJSON.apply(this, arguments),
-      stories: @stories().toJSON()
+      stories: @stories().toJSON({velocity: @project().get('current_velocity')})
       enabledEpics: epicsJSON
 
 

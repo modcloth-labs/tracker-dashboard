@@ -1,8 +1,23 @@
-Handlebars.registerHelper('progressWidth', function(metrics) {
+Handlebars.registerHelper('progressWidth', function(metrics, total) {
+  console.log(arguments);
   var metricName = app.get('metric');
   metrics = metrics || {};
-  var total = _.reduce( _(this).chain().values().pluck(metricName).value(), function( memo, num ) { return memo + num; }, 0 );
-  return 100.0 * (metrics[metricName] || 0) / total;
+  return 100.0 * (metrics[metricName] || 0) / total[metricName];
+});
+
+Handlebars.registerHelper("showVelocity", function(total, options) {
+  return app.get('metric') == 'points' && total.velocity ? options.fn(total) : "";
+});
+
+Handlebars.registerHelper("extraVelocityWidth", function() {
+  var total = this;
+  if(total.velocity) {
+    var val = total[app.get('metric')];
+    console.log(val, total.velocity)
+    return val < total.velocity ? 0 : 100.0 * (1.0 - total.velocity / val);
+  } else {
+    return "0";
+  }
 });
 
 Handlebars.registerHelper('metricValue', function(metrics) {

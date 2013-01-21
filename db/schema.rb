@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112044519) do
+ActiveRecord::Schema.define(:version => 20130120185205) do
 
   create_table "credentials", :force => true do |t|
     t.string   "token"
@@ -64,11 +64,12 @@ ActiveRecord::Schema.define(:version => 20130112044519) do
     t.integer  "tracker_id"
     t.integer  "credentials_id"
     t.string   "name"
-    t.text     "all_labels",     :default => "", :null => false
-    t.text     "enabled_labels", :default => "", :null => false
+    t.text     "all_labels",       :default => "", :null => false
+    t.text     "enabled_labels",   :default => "", :null => false
     t.boolean  "enabled"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "current_velocity"
   end
 
   create_table "stories", :force => true do |t|

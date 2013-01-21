@@ -91,6 +91,25 @@ p.lead {
   text-transform: capitalize;
 }
 
+.progress-container {
+    position: relative;
+}
+
+.progress-velocity {
+    position: absolute;
+    width: 2px;
+    top: -3px;
+    bottom: -3px;
+
+    border-left: 1px dotted #000;
+    border-right: 1px dotted #000;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-striped {
+  margin: 3px 0 23px;
+}
+
 .progress-striped .bar {
   overflow: hidden;
   font-size: 9px;
