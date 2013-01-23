@@ -12,7 +12,7 @@ class Credentials < ActiveRecord::Base
     Tracker::Project.all.each do |proj|
       project = projects.find_or_create_by_tracker_id(proj.id)
       project.name = proj.name
-      project.all_labels = proj.labels.downcase
+      project.all_labels = proj.labels.downcase if proj.labels.present?
       project.save!
       dead_projects.delete(project)
     end
