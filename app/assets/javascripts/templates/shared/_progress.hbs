@@ -1,0 +1,21 @@
+<div class="progress-container">
+{{#metrics}}
+  {{#byState}}
+    {{#showVelocity total}}
+      <div class="progress-velocity" style="right: {{extraVelocityWidth}}%" title="expected velocity marker">
+    {{/showVelocity}}
+    </div>
+    <div class="progress progress-striped active">
+      <div class="progress-normal">
+        {{#eachState}}
+          <div class="bar bar-{{name}}"
+               title="{{metricValue value}} {{metricName}} in state {{name}}"
+               style="width: {{progressWidth value ../total}}%;">
+            <span class="value">{{metricValue value}}</span>
+          </div>
+        {{/eachState}}
+      </div>
+    </div>
+  {{/byState}}
+{{/metrics}}
+</div>

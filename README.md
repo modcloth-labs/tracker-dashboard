@@ -1,17 +1,60 @@
-tracker-dashboard
-=================
+TrackerDashboard
+================
 
-ModCloth Dashboard for Pivotal Tracker projects
+This application is designed to give you more visibility into metrics that matter to
+larger companies using Pivotal Tracker for project management.  It's also designed visually
+to be an "information radiator" in the center of your office.
 
-* It is not necessarily an App, but it looks like one.
-* It is composed by an HTML5 web interface and a Ruby library for data extraction.
-* The Pivotal Tracker API provides the data through basic web requests.
-* The lightweight Ruby library structures and stores the data in JSON files that are accessible to the interface.
+Features
+--------
+* See the progress of the current iteration in all your projects on one page.
+* Look at the status of cross-project epics (correlated by label name)
+* Look at the status of cross-project releases (correlated by name)
+* Easy setup page that helps you set up your tracker credentials and basic authentication
 
-Setup
+Installing and running locally
+------------------------------
+	rvm install 1.9.3   # or install ruby 1.9.x some other way
+	git clone
+	bundle install
+	rake db:create db:migrate
+	rails server
+	open http://localhost:3000
 
-1. Set the contents in a web server directory.
-2. Set your Pivotal Tracker credentials in config/credentials.json
-3. Set your Pivotal Tracker projects in config/projects
-4. In order to refresh the data, go to the 'ruby' folder and run: bundle exec rake load
-5. Visualize in a browser.
+Deploying
+---------
+
+This app is designed to be deployed easily with [CloudFoundry](http://www.cloudfoundry.com>) and [Heroku](http://heroku.com>).
+You can also run it yourself using a standard ruby application system like Passenger or Unicorn.
+A database is required, but all the standard rails ones (sqlite3 mysql and postgres) are supported.
+
+### CloudFoundry deployment
+
+	git clone
+	bundle install
+	bundle exec rake assets:precompile
+	vmc push --runtime ruby19
+
+### Heroku deployment
+
+	git clone
+	heroku apps:create <name_here>
+	git push heroku master
+
+Automatically Updating
+----------------------
+
+The data is not automatically updated unless you click update data.  For automatic updating,
+simply figure out how to schedule running the following task as often as you want:
+
+	bundle exec rake load
+
+This will fetch new data from the tracker API and put it in the relational database. If you
+deploy on heroku, you can use the following addon to schedule tasks:
+
+	heroku addons:add scheduler
+	heroku addons:open scheduler
+
+### Credits
+Written by Luis Flores, David Stevenson, Ben Marini, and Sanford Redlich.
+Please fork this application and enhance it to fit your needs.

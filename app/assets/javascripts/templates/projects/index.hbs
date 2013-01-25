@@ -1,0 +1,12 @@
+{{#projects}}
+  <td id="project-{{id}}" width="{{../cellWidth}}%" nowrap>
+    {{> _projects_header}}
+    {{#currentIteration}}
+      {{#stories}}
+        {{consoleLog}}
+        {{> _shared_progress}}
+      {{/stories}}
+      {{> _projects_epics}}
+    {{/currentIteration}}
+  </td>
+{{/projects}}

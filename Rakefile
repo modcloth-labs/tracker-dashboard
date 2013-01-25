@@ -1,9 +1,7 @@
-task default: [ :load ]
+#!/usr/bin/env rake
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-task :load do
-  require 'dalli'
-  require File.expand_path('../lib/tracker_dashboard', __FILE__)
+require File.expand_path('../config/application', __FILE__)
 
-  cache = Dalli::Client.new
-  cache.set 'data.projects.json', TrackerDashboard::DataLoad.fetch
-end
+TrackerDashboard::Application.load_tasks

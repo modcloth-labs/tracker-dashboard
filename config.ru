@@ -1,7 +1,4 @@
-require File.expand_path('../app', __FILE__)
+# This file is used by Rack-based servers to start the application.
 
-use Rack::Auth::Basic, "Restricted" do |username, password|
-  { 'winston' => 'we<3bluetoo!' }[username] == password
-end
-
-run Sinatra::Application
+require ::File.expand_path('../config/environment',  __FILE__)
+run TrackerDashboard::Application

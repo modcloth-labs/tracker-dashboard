@@ -1,0 +1,11 @@
+{{#releases}}
+  {{#unless filtered}}
+    <td id="release-{{release/cid}}" width="{{../cellWidth}}%" nowrap>
+      {{> _releases_header}}
+      {{#total}}
+        {{> _shared_progress}}
+      {{/total}}
+      {{> _releases_projects}}
+    </td>
+  {{/unless}}
+{{/releases}}

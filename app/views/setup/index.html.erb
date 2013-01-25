@@ -1,0 +1,50 @@
+<h2>Initial Setup</h2>
+<%= form_for @credentials, :url => setup_path, :html => {:class => "form-horizontal", :method => "POST"} do |f| %>
+  <%= f.error_messages %>
+  <fieldset>
+    <legend>Credentials</legend>
+    <div class="control-group">
+      <%= f.label :token, "Tracker API Token", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :token %>
+      </div>
+    </div>
+
+    <legend>Basic Auth Security (optional)</legend>
+    <div class="control-group">
+      <%= f.label :auth_user, "Username", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :auth_user %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :auth_password, "Password", :class => "control-label" %>
+      <div class="controls">
+        <%= f.password_field :auth_password, :value => f.object.auth_password %>
+      </div>
+    </div>
+
+    <legend>Projects</legend>
+    <%= f.fields_for :projects do |pform| %>
+      <div class="project">
+        <%= pform.label :enabled, :class => "inline" do %>
+          <%= pform.check_box :enabled, :class => "project_enabled" %>
+          <%= pform.object.name %>
+        <% end %>
+        <section class='labels' style='margin-left: 100px; <%= pform.object.enabled? ? '' : 'display: none;' %>'>
+          <em><%= pform.label :enabled_labels_list, "Important Labels:" %></em>
+          <% pform.object.all_labels_list.each_with_index do |label_name, idx| %>
+            <label class="inline checkbox-list" id="label_proj_<%= pform.object.id %>_<%= idx %>">
+              <%= pform.check_box(:enabled_labels_list, {:multiple => true, :id => "label_proj_#{pform.object.id}_#{idx}", :checked => pform.object.enabled_labels_list.include?(label_name)}, label_name, "" ) %>
+              <%= label_name %>
+            </label>
+          <% end %>
+        </section>
+      </div>
+    <% end %>
+    <% if @projects.empty? %>
+      <label>No projects yet. Try pressing the update button below to fetch them from tracker.</label>
+    <% end %>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </fieldset>
+<% end %>
