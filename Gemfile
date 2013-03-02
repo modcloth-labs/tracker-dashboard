@@ -10,10 +10,12 @@ gem 'rest-client'
 gem 'thin'
 gem 'yajl-ruby'
 gem 'handlebars_assets'
-
-
-# DATABASE ADAPTERS, uncomment 1 of these below:
-# gem 'pg'
+gem 'jquery-rails'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
+gem 'underscore_extensions'
+gem 'backbone_extensions'
+gem 'rails-backbone'
+gem 'dynamic_form'
 
 
 # Gems used only for assets and not required
@@ -21,11 +23,10 @@ gem 'handlebars_assets'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development do
@@ -34,19 +35,17 @@ group :development do
   gem 'cloudfoundry-jquery-rails'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :production do
   # you can comment out any of these you aren't using
   gem 'mysql2'
   gem 'pg'
 end
 
-gem 'jquery-rails'
-gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails'
-gem 'underscore_extensions'
-gem 'backbone_extensions'
-gem 'rails-backbone'
-
-gem 'dynamic_form'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -61,3 +60,6 @@ gem 'dynamic_form'
 
 # To use debugger
 # gem 'debugger'
+
+# DATABASE ADAPTERS, uncomment 1 of these below:
+# gem 'pg'
