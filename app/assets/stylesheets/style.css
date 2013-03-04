@@ -11,13 +11,14 @@ a {
 }
 
 .badge {
+  font-weight: normal;
   margin-right: 3px;
   padding-left: 6px;
   padding-right: 6px;
 }
 
 .badge-started {
-  background-color: #452B72;
+  background-color: #583D87;
 }
 
 .badge-finished {
@@ -25,11 +26,11 @@ a {
 }
 
 .badge-delivered {
-  background-color: #F9BA15;
+  background-color: #EBA300;
 }
 
 .badge-accepted {
-  background-color: #8EAC00;
+  background-color: #809900;
 }
 
 .badge-rejected {
@@ -42,7 +43,7 @@ a {
 
 .dashboard-table tbody tr td {
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 5px;
   vertical-align: top;
 }
 
@@ -71,6 +72,44 @@ header h3 {
   padding: 14px 24px;
 }
 
+.icon-feature, .icon-bug, .icon-chore {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0px;
+  line-height: 18px;
+  vertical-align: text-top;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+}
+
+.icon-bug {
+  background-image: url('../img/icon-bug.png');
+}
+
+.icon-chore {
+  background-image: url('../img/icon-chore.png');
+}
+
+.icon-feature {
+  background-image: url('../img/icon-feature.png');
+}
+
+.lead-small {
+  font-size: 18px;
+}
+
+.logo {
+  display: inline-block;
+  width: 128px;
+  height: 38px;
+  margin: 12px 20px;
+  vertical-align: text-top;
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-image: url('../img/logo.png');
+}
+
 .navbar-header .navbar-inner {
   background-color: #748599;
   background-image: none;
@@ -80,10 +119,6 @@ header h3 {
 .navbar-header .lead {
   color: #FFFFFF;
   padding: 8px 0px;
-}
-
-.lead-small {
-  font-size: 18px;
 }
 
 p.lead {
@@ -112,11 +147,13 @@ p.lead {
 
 .progress-striped .bar {
   overflow: hidden;
-  font-size: 9px;
+  font-size: 12px;
+  padding-left: 5px;
+  text-align: left;
 }
 
 .progress-striped .bar-started {
-  background-color: #452B72;
+  background-color: #583D87;
 }
 
 .progress-striped .bar-finished {
@@ -124,11 +161,11 @@ p.lead {
 }
 
 .progress-striped .bar-delivered {
-  background-color: #F9BA15;
+  background-color: #EBA300;
 }
 
 .progress-striped .bar-accepted {
-  background-color: #8EAC00;
+  background-color: #809900;
 }
 
 .progress-striped .bar-rejected {
@@ -155,16 +192,25 @@ p.lead {
   padding: 0px 15px 8px 15px;
 }
 
+.stats-inner .count {
+  float: left;
+}
+
+.stats-inner .story-type {
+  float: right;
+}
+
 table.wrap {
   table-layout: fixed;
 }
 
 table.wrap tbody tr td:first-child {
-  padding: 5px 10px;
+  padding: 5px 0px 0px 15px;
 }
 
 table.wrap td {
-  padding: 5px 10px;
+  line-height: 25px;
+  padding: 5px 5px 5px 10px;
   white-space: normal;
 }
 
@@ -172,29 +218,32 @@ table.wrap td {
   margin-bottom: 0;
 }
 
+td .estimate {
+  width: 10px;
+}
+
+td .story-type {
+  width: 15px;
+}
+
 .stories .started td {
-  background-color: #F7E8FC;
-/*  color: #150042;*/
+  background-color: #EAE8F0;
 }
 
 .stories .finished td {
-  background-color: #E8FBFC;
-/*  color: #004A67;*/
+  background-color: #E8F1F4;
 }
 
 .stories .delivered td {
-  background-color: #FCFCE8;
-/*  color: #B98A00;*/
+  background-color: #FEF8E4;
 }
 
 .stories .accepted td {
-  background-color: #EFFCE8;
-/*  color: #5E7C00;*/
+  background-color: #F3F6E4;
 }
 
 .stories .rejected td {
-  background-color: #FCE8E8;
-/*  color: #8F0C13;*/
+  background-color: #F7E6EB;
 }
 
 

@@ -2,11 +2,11 @@
   {{#stories}}
     {{#stories}}
       <tr class="{{current_state}}">
-        <td style="width: 10px">
+        <td class="story-type">
           <i class="{{iconClassFor story_type}}"/>
         </td>
-        <td style="width: 10px">
-          {{estimateString estimate}}
+        <td class="estimate">
+          <small><strong>{{estimateString estimate}}</strong></small>
         </td>
         <td>
           {{name}}
