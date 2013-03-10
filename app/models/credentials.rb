@@ -7,6 +7,8 @@ class Credentials < ActiveRecord::Base
 
   accepts_nested_attributes_for :projects
 
+  private
+
   def fetch_projects
     dead_projects = Project.all
     Tracker::Project.all.each do |proj|
