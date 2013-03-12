@@ -33,7 +33,7 @@ Handlebars.registerHelper('metricName', function() {
 
 
 Handlebars.registerHelper('formatDate', function(finishDate) {
-  return ( finishDate.getMonth() + 1 ) + '/' + finishDate.getDate() + '/' + finishDate.getFullYear();
+  return ( finishDate.getUTCMonth() + 1 ) + '/' + finishDate.getUTCDate() + '/' + finishDate.getUTCFullYear();
 });
 
 Handlebars.registerHelper('estimateString', function(estimate) {
@@ -47,15 +47,15 @@ Handlebars.registerHelper('consoleLog', function() {
 Handlebars.registerHelper('iconClassFor', function(storyType) {
   var storyChar = storyType.charAt( 0 ).toUpperCase();
   return {
-    'B' : 'icon-fire',
-    'C' : 'icon-wrench',
-    'F' : 'icon-star'
+    'B' : 'icon-bug',
+    'C' : 'icon-chore',
+    'F' : 'icon-feature'
   }[storyChar];
 });
 
 Handlebars.registerHelper('eachState', function(options) {
   var self = this;
-  return _.map(["accepted", "delivered", "finished", "rejected", "started"], function(state) {
+  return _.map([ "accepted", "delivered", "finished", "started", "rejected" ], function(state) {
     return self[state] ? options.fn({name: state, value: self[state]}) : "";
   }).join("");
 });
