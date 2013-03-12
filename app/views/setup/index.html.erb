@@ -1,3 +1,7 @@
+<%- content_for :head do %>
+  <%= stylesheet_link_tag 'setup' %>
+<%- end %>
+
 <h2>Initial Setup</h2>
 <%= form_for @credentials, :url => setup_path, :html => {:class => "form-horizontal", :method => "POST"} do |f| %>
   <%= f.error_messages %>
@@ -29,13 +33,16 @@
       <div class="project">
         <%= pform.label :enabled, :class => "inline" do %>
           <%= pform.check_box :enabled, :class => "project_enabled" %>
-          <%= pform.object.name %>
+          <strong><%= pform.object.name %></strong>
         <% end %>
-        <section class='labels' style='margin-left: 100px; <%= pform.object.enabled? ? '' : 'display: none;' %>'>
-          <em><%= pform.label :enabled_labels_list, "Important Labels:" %></em>
+        <section class='labels' style='<%= pform.object.enabled? ? '' : 'display: none;' %>'>
+          <!-- <em><%= pform.label :enabled_labels_list, "Important Labels:" %></em> -->
+          <p><em>Important Labels:</em></p>
+
           <% pform.object.all_labels_list.each_with_index do |label_name, idx| %>
-            <label class="inline checkbox-list" id="label_proj_<%= pform.object.id %>_<%= idx %>">
-              <%= pform.check_box(:enabled_labels_list, {:multiple => true, :id => "label_proj_#{pform.object.id}_#{idx}", :checked => pform.object.enabled_labels_list.include?(label_name)}, label_name, "" ) %>
+            <%- checked = pform.object.enabled_labels_list.include?(label_name) %>
+            <label class="inline checkbox-list <%= checked ? 'selected' : '' %>" id="label_proj_<%= pform.object.id %>_<%= idx %>">
+              <%= pform.check_box(:enabled_labels_list, {:multiple => true, :id => "label_proj_#{pform.object.id}_#{idx}", :class => 'project-label', :checked => checked }, label_name, "" ) %>
               <%= label_name %>
             </label>
           <% end %>
