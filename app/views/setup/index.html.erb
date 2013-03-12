@@ -32,7 +32,7 @@
     <%= f.fields_for :projects do |pform| %>
       <div class="project">
         <%= pform.label :enabled, :class => "inline" do %>
-          <%= pform.check_box :enabled, :class => "project_enabled" %>
+          <%= pform.check_box :enabled, :class => "project-name" %>
           <strong><%= pform.object.name %></strong>
         <% end %>
         <section class='labels' style='<%= pform.object.enabled? ? '' : 'display: none;' %>'>
@@ -49,9 +49,18 @@
         </section>
       </div>
     <% end %>
+
     <% if @projects.empty? %>
       <label>No projects yet. Try pressing the update button below to fetch them from tracker.</label>
     <% end %>
+
     <button type="submit" class="btn btn-primary">Update</button>
+
   </fieldset>
 <% end %>
+
+<%- content_for :outside_of_container do %>
+  <div id="update-button-holder" class="fixed" style="display:none;">
+    <button type="submit" class="btn btn-primary">Update</button>
+  </div>
+<%- end %>
