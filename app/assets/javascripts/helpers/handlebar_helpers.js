@@ -1,18 +1,18 @@
 Handlebars.registerHelper('progressWidth', function(metrics, total) {
   console.log(arguments);
-  var metricName = app.get('metric');
+  var metricName = skyline.app.get('metric');
   metrics = metrics || {};
   return 100.0 * (metrics[metricName] || 0) / total[metricName];
 });
 
 Handlebars.registerHelper("showVelocity", function(total, options) {
-  return app.get('metric') == 'points' && total.velocity ? options.fn(total) : "";
+  return skyline.app.get('metric') == 'points' && total.velocity ? options.fn(total) : "";
 });
 
 Handlebars.registerHelper("extraVelocityWidth", function() {
   var total = this;
   if(total.velocity) {
-    var val = total[app.get('metric')];
+    var val = total[skyline.app.get('metric')];
     console.log(val, total.velocity)
     return val < total.velocity ? 0 : 100.0 * (1.0 - total.velocity / val);
   } else {
@@ -21,14 +21,14 @@ Handlebars.registerHelper("extraVelocityWidth", function() {
 });
 
 Handlebars.registerHelper('metricValue', function(metrics) {
-  var metricName = app.get('metric');
+  var metricName = skyline.app.get('metric');
   metrics = metrics || {};
   return Math.round(metrics[metricName] || 0);
 });
 
 
 Handlebars.registerHelper('metricName', function() {
-  return app.get('metric');
+  return skyline.app.get('metric');
 });
 
 
@@ -61,7 +61,7 @@ Handlebars.registerHelper('eachState', function(options) {
 });
 
 Handlebars.registerHelper('stateBadge', function(stateName) {
-  var metricName = app.get('metric');
+  var metricName = skyline.app.get('metric');
   return new Handlebars.SafeString(
           this[stateName]
                   ? '<span class="badge badge-' + stateName + '">' +
