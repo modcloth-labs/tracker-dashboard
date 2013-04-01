@@ -5,7 +5,7 @@ skyline.Story = skyline.Model.extend(
   project: ->
     @get('project')
   iteration: ->
-    @_iteration ||= (app.projects().chain().map (project) =>
+    @_iteration ||= (skyline.app.projects().chain().map (project) =>
       project.iterations().detect (iter) =>
         _.contains iter.get('story_ids'), @id
     ).compact().first().value()

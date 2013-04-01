@@ -12,3 +12,23 @@ var skyline = skyline || {
   Collections: {},
   Views: {}
 };
+
+$(function() {
+  'use strict';
+  
+  skyline.app = new skyline.App();
+  skyline.appView = new skyline.Views.AppView({ app: skyline.app, el: $("#root") });
+  
+  if( $.cookie('metric') ) {
+    this.app.set( 'metric', $.cookie('metric') );
+  }
+  
+  if( $.cookie('filter_tiny_items') ) {
+    this.app.set( 'filter_tiny_items', true );
+  }
+  
+  skyline.app.fetch().then( function() {
+    skyline.app.trigger('change');
+  });
+  
+});
