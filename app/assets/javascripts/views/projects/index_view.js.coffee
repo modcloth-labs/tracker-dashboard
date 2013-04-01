@@ -1,6 +1,6 @@
-skyline.Views.Projects ||= {}
+skyline.ProjectsView ||= {}
 
-class skyline.Views.Projects.IndexView extends Backbone.View
+class skyline.ProjectsView.IndexView extends Backbone.View
   template: HandlebarsTemplates["projects/index"]
   tagName: 'tr'
 

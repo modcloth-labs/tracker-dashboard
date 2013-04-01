@@ -7,17 +7,13 @@
 //= require_tree ./templates
 //= require_tree ./views
 
-var skyline = skyline || {
-  Models: {},
-  Collections: {},
-  Views: {}
-};
+var skyline = skyline || {};
 
 $(function() {
   'use strict';
   
   skyline.app = new skyline.App();
-  skyline.appView = new skyline.Views.AppView({ app: skyline.app, el: $("#root") });
+  skyline.appView = new skyline.AppView({ app: skyline.app, el: $("#root") });
   
   if( $.cookie('metric') ) {
     this.app.set( 'metric', $.cookie('metric') );

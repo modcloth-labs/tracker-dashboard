@@ -12,17 +12,17 @@ $(function() {
     },
 
     projects: function() {
-      this.view = new skyline.Views.Projects.IndexView({ app: skyline.app });
+      this.view = new skyline.ProjectsView.IndexView({ app: skyline.app });
       $("#dashboard").html( this.view.render().el );
     },
 
     epics: function() {
-      this.view = new skyline.Views.Epics.IndexView({ app: skyline.app });
+      this.view = new skyline.EpicsView.IndexView({ app: skyline.app });
       $("#dashboard").html( this.view.render().el );
     },
 
     releases: function() {
-      this.view = new skyline.Views.Releases.IndexView({ app: skyline.app });
+      this.view = new skyline.ReleasesView.IndexView({ app: skyline.app });
       $("#dashboard").html( this.view.render().el );
     }
   });
