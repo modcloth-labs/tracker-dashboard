@@ -1,11 +1,11 @@
-Skyline.Project = Skyline.Model.extend(
+skyline.Project = skyline.Model.extend(
   paramRoot: 'project'
   relations: [
     {
     type: Backbone.HasMany,
     key: 'stories',
-    relatedModel: 'Skyline.Story',
-    collectionType: 'Skyline.Stories',
+    relatedModel: 'skyline.Story',
+    collectionType: 'skyline.Stories',
     reverseRelation: {
       key: 'project'
     }
@@ -13,8 +13,8 @@ Skyline.Project = Skyline.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'iterations',
-    relatedModel: 'Skyline.Iteration',
-    collectionType: 'Skyline.Iterations',
+    relatedModel: 'skyline.Iteration',
+    collectionType: 'skyline.Iterations',
     reverseRelation: {
       key: 'project'
     }
@@ -33,12 +33,8 @@ Skyline.Project = Skyline.Model.extend(
     _.map @get('enabled_label_ids'), (labelId) =>
       @labels().get(labelId)
   toJSON: ->
-    _.extend Skyline.Model.prototype.toJSON.apply(this, arguments),
+    _.extend skyline.Model.prototype.toJSON.apply(this, arguments),
       currentIteration:
         @iterations().first().toJSON()
 
-)
-
-Skyline.Projects = Backbone.Collection.extend(
-  model: Skyline.Project
 )

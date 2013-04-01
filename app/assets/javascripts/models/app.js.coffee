@@ -1,4 +1,4 @@
-Skyline.App = Skyline.Model.extend(
+skyline.App = skyline.Model.extend(
   paramRoot: 'app'
   url: '/projects'
   defaults:
@@ -8,8 +8,8 @@ Skyline.App = Skyline.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'labels',
-    relatedModel: 'Skyline.Label',
-    collectionType: 'Skyline.Labels',
+    relatedModel: 'skyline.Label',
+    collectionType: 'skyline.Labels',
     reverseRelation: {
       key: 'project'
     }
@@ -17,8 +17,8 @@ Skyline.App = Skyline.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'projects',
-    relatedModel: 'Skyline.Project',
-    collectionType: 'Skyline.Projects',
+    relatedModel: 'skyline.Project',
+    collectionType: 'skyline.Projects',
     reverseRelation: {
       key: 'app'
     }
@@ -29,12 +29,12 @@ Skyline.App = Skyline.Model.extend(
   labels: ->
     @get('labels')
   epics: ->
-    epics = new Skyline.Epics([], app: this)
+    epics = new skyline.Epics([], app: this)
     _.map @enabledLabels(), (label) =>
-      epics.add(new Skyline.Epic({label: label, app: this}), silent: true);
+      epics.add(new skyline.Epic({label: label, app: this}), silent: true);
     epics
   releases: ->
-    releases = new Skyline.Releases([], app: this)
+    releases = new skyline.Releases([], app: this)
     _.each @stories(), (story) =>
       if story.get('story_type') == 'release' && story.get('current_state') == 'unstarted'
         releases.add({id: story.get('name'), app: this}, silent: true);

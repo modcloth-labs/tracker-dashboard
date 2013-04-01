@@ -1,4 +1,4 @@
-Skyline.Label = Skyline.Model.extend(
+skyline.Label = skyline.Model.extend(
   paramRoot: 'label'
   app: ->
     @get 'app'
@@ -7,8 +7,4 @@ Skyline.Label = Skyline.Model.extend(
       _.select @app().stories(), (s) =>
         s.labels().include(this)
     )
-)
-
-Skyline.Labels = Backbone.Collection.extend(
-  model: Skyline.Label
 )

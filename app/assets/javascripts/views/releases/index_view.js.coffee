@@ -1,6 +1,6 @@
-Skyline.Views.Releases ||= {}
+skyline.Views.Releases ||= {}
 
-class Skyline.Views.Releases.IndexView extends Backbone.View
+class skyline.Views.Releases.IndexView extends Backbone.View
   template: HandlebarsTemplates["releases/index"]
   tagName: 'tr'
 
