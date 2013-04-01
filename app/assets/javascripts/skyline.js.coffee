@@ -1,14 +1,16 @@
 #= require_self
-#= require ./router
+#= require_tree ./helpers
 #= require_tree ./models
+#= require_tree ./routers
+#= require_tree ./templates
 #= require_tree ./views
 
-window.TrackerDashboard =
+window.Skyline =
   Models: {}
   Collections: {}
   Views: {}
 
-TrackerDashboard.Model = Backbone.RelationalModel.extend
+Skyline.Model = Backbone.RelationalModel.extend
   parse: (attrs) ->
     _.each attrs, (v, k) =>
       attrs[k] = new Date(v) if v && _.isFunction(v.match) && v.match /^20\d\d.*T.*Z$/
@@ -16,13 +18,13 @@ TrackerDashboard.Model = Backbone.RelationalModel.extend
   toJSON: ->
     hash = {}
     _.each @attributes, (v,k) =>
-      hash[k] = v unless v instanceof TrackerDashboard.Model || v instanceof Backbone.Collection
+      hash[k] = v unless v instanceof Skyline.Model || v instanceof Backbone.Collection
     hash
 
-_.extend TrackerDashboard.Model, Backbone.extensions.include
+_.extend Skyline.Model, Backbone.extensions.include
 
 $ ->
-  window.router = new TrackerDashboard.Router()
+  window.router = new Skyline.Router()
   Backbone.history.start
     pushState: true
 

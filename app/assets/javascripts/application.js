@@ -24,7 +24,4 @@
 //= require backbone_extensions/decorator
 //= require backbone_extensions/associations
 
-
-//= require_tree ./templates
-//= require backbone/tracker_dashboard
-//= require_tree .
+//= require skyline

@@ -1,6 +1,6 @@
-TrackerDashboard.Views.Releases ||= {}
+Skyline.Views.Releases ||= {}
 
-class TrackerDashboard.Views.Releases.IndexView extends Backbone.View
+class Skyline.Views.Releases.IndexView extends Backbone.View
   template: HandlebarsTemplates["releases/index"]
   tagName: 'tr'
 

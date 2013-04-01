@@ -1,4 +1,4 @@
-class TrackerDashboard.Views.AppView extends Backbone.View
+class Skyline.Views.AppView extends Backbone.View
   initialize: (options) ->
     @app = options.app
     _.extend this,

@@ -1,4 +1,4 @@
-TrackerDashboard.Story = TrackerDashboard.Model.extend(
+Skyline.Story = Skyline.Model.extend(
   paramRoot: 'story'
   app: ->
     @get('project').app()
@@ -14,13 +14,13 @@ TrackerDashboard.Story = TrackerDashboard.Model.extend(
       @project().labels().get(labelId)
 )
 
-TrackerDashboard.Stories = Backbone.Collection.extend(
-  model: TrackerDashboard.Story
+Skyline.Stories = Backbone.Collection.extend(
+  model: Skyline.Story
   url: '/stories',
   byState: ->
     groups = {}
     @each (story) =>
-      groups[story.get('current_state')] ||= new TrackerDashboard.Stories()
+      groups[story.get('current_state')] ||= new Skyline.Stories()
       groups[story.get('current_state')].push(story)
     groups
 

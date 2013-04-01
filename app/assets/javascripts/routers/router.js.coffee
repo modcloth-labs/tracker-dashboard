@@ -1,11 +1,11 @@
-class TrackerDashboard.Router extends Backbone.Router
+class Skyline.Router extends Backbone.Router
   initialize: (options = {}) ->
-    @app = new TrackerDashboard.App()
+    @app = new Skyline.App()
     @app.set('metric', $.cookie('metric')) if $.cookie('metric')
     @app.set('filter_tiny_items', true) if $.cookie('filter_tiny_items')
 
     window.app = @app
-    @appView = new TrackerDashboard.Views.AppView(app: @app, el: $("#root"))
+    @appView = new Skyline.Views.AppView(app: @app, el: $("#root"))
     @app.fetch().then =>
       @app.trigger('change')
 
@@ -15,13 +15,13 @@ class TrackerDashboard.Router extends Backbone.Router
     "releases": "releases"
 
   projects: ->
-    @view = new TrackerDashboard.Views.Projects.IndexView(app: @app)
+    @view = new Skyline.Views.Projects.IndexView(app: @app)
     $("#dashboard").html(@view.render().el)
 
   epics: ->
-    @view = new TrackerDashboard.Views.Epics.IndexView(app: @app)
+    @view = new Skyline.Views.Epics.IndexView(app: @app)
     $("#dashboard").html(@view.render().el)
 
   releases: ->
-    @view = new TrackerDashboard.Views.Releases.IndexView(app: @app)
+    @view = new Skyline.Views.Releases.IndexView(app: @app)
     $("#dashboard").html(@view.render().el)

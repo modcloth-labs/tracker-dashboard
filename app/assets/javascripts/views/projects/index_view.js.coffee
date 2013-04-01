@@ -1,6 +1,6 @@
-TrackerDashboard.Views.Projects ||= {}
+Skyline.Views.Projects ||= {}
 
-class TrackerDashboard.Views.Projects.IndexView extends Backbone.View
+class Skyline.Views.Projects.IndexView extends Backbone.View
   template: HandlebarsTemplates["projects/index"]
   tagName: 'tr'
 

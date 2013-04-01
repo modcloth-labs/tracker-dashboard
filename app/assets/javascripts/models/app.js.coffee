@@ -1,4 +1,4 @@
-TrackerDashboard.App = TrackerDashboard.Model.extend(
+Skyline.App = Skyline.Model.extend(
   paramRoot: 'app'
   url: '/projects'
   defaults:
@@ -8,8 +8,8 @@ TrackerDashboard.App = TrackerDashboard.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'labels',
-    relatedModel: 'TrackerDashboard.Label',
-    collectionType: 'TrackerDashboard.Labels',
+    relatedModel: 'Skyline.Label',
+    collectionType: 'Skyline.Labels',
     reverseRelation: {
       key: 'project'
     }
@@ -17,8 +17,8 @@ TrackerDashboard.App = TrackerDashboard.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'projects',
-    relatedModel: 'TrackerDashboard.Project',
-    collectionType: 'TrackerDashboard.Projects',
+    relatedModel: 'Skyline.Project',
+    collectionType: 'Skyline.Projects',
     reverseRelation: {
       key: 'app'
     }
@@ -29,12 +29,12 @@ TrackerDashboard.App = TrackerDashboard.Model.extend(
   labels: ->
     @get('labels')
   epics: ->
-    epics = new TrackerDashboard.Epics([], app: this)
+    epics = new Skyline.Epics([], app: this)
     _.map @enabledLabels(), (label) =>
-      epics.add(new TrackerDashboard.Epic({label: label, app: this}), silent: true);
+      epics.add(new Skyline.Epic({label: label, app: this}), silent: true);
     epics
   releases: ->
-    releases = new TrackerDashboard.Releases([], app: this)
+    releases = new Skyline.Releases([], app: this)
     _.each @stories(), (story) =>
       if story.get('story_type') == 'release' && story.get('current_state') == 'unstarted'
         releases.add({id: story.get('name'), app: this}, silent: true);

@@ -1,4 +1,4 @@
-TrackerDashboard.Epic = TrackerDashboard.Model.extend(
+Skyline.Epic = Skyline.Model.extend(
   paramRoot: 'epic'
   app: ->
     @get 'app'
@@ -6,22 +6,22 @@ TrackerDashboard.Epic = TrackerDashboard.Model.extend(
     @get 'label'
 )
 
-TrackerDashboard.Epics = Backbone.Collection.extend(
+Skyline.Epics = Backbone.Collection.extend(
   initialize: (models, options) ->
     @app = options.app
   projects: ->
     @app.projects()
   labels: ->
     @app.labels()
-  model: TrackerDashboard.Label
+  model: Skyline.Label
   stories: ->
     groups = {}
     labels = @invoke('label')
     @projects().each (p) =>
       p.stories().each (s) =>
         _.each(_.intersection(labels, s.labels()), (l) =>
-          groups[l.id] ||= {projects: {}, total: new TrackerDashboard.Stories()}
-          groups[l.id].projects[p.id] ||= new TrackerDashboard.Stories()
+          groups[l.id] ||= {projects: {}, total: new Skyline.Stories()}
+          groups[l.id].projects[p.id] ||= new Skyline.Stories()
           groups[l.id].projects[p.id].add(s, silent: true)
           groups[l.id].total.add(s, silent: true)
         )

@@ -1,11 +1,11 @@
-TrackerDashboard.Project = TrackerDashboard.Model.extend(
+Skyline.Project = Skyline.Model.extend(
   paramRoot: 'project'
   relations: [
     {
     type: Backbone.HasMany,
     key: 'stories',
-    relatedModel: 'TrackerDashboard.Story',
-    collectionType: 'TrackerDashboard.Stories',
+    relatedModel: 'Skyline.Story',
+    collectionType: 'Skyline.Stories',
     reverseRelation: {
       key: 'project'
     }
@@ -13,8 +13,8 @@ TrackerDashboard.Project = TrackerDashboard.Model.extend(
     {
     type: Backbone.HasMany,
     key: 'iterations',
-    relatedModel: 'TrackerDashboard.Iteration',
-    collectionType: 'TrackerDashboard.Iterations',
+    relatedModel: 'Skyline.Iteration',
+    collectionType: 'Skyline.Iterations',
     reverseRelation: {
       key: 'project'
     }
@@ -33,12 +33,12 @@ TrackerDashboard.Project = TrackerDashboard.Model.extend(
     _.map @get('enabled_label_ids'), (labelId) =>
       @labels().get(labelId)
   toJSON: ->
-    _.extend TrackerDashboard.Model.prototype.toJSON.apply(this, arguments),
+    _.extend Skyline.Model.prototype.toJSON.apply(this, arguments),
       currentIteration:
         @iterations().first().toJSON()
 
 )
 
-TrackerDashboard.Projects = Backbone.Collection.extend(
-  model: TrackerDashboard.Project
+Skyline.Projects = Backbone.Collection.extend(
+  model: Skyline.Project
 )

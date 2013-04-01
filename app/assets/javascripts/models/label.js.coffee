@@ -1,4 +1,4 @@
-TrackerDashboard.Label = TrackerDashboard.Model.extend(
+Skyline.Label = Skyline.Model.extend(
   paramRoot: 'label'
   app: ->
     @get 'app'
@@ -9,6 +9,6 @@ TrackerDashboard.Label = TrackerDashboard.Model.extend(
     )
 )
 
-TrackerDashboard.Labels = Backbone.Collection.extend(
-  model: TrackerDashboard.Label
+Skyline.Labels = Backbone.Collection.extend(
+  model: Skyline.Label
 )

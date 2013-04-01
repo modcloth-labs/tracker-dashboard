@@ -1,6 +1,6 @@
-TrackerDashboard.Views.Epics ||= {}
+Skyline.Views.Epics ||= {}
 
-class TrackerDashboard.Views.Epics.IndexView extends Backbone.View
+class Skyline.Views.Epics.IndexView extends Backbone.View
   template: HandlebarsTemplates["epics/index"]
   tagName: 'tr'
 

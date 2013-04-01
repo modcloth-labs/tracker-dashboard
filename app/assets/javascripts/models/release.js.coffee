@@ -1,6 +1,6 @@
-TrackerDashboard.Release = TrackerDashboard.Model.extend(
+Skyline.Release = Skyline.Model.extend(
   initialize: ->
-    @set('stories', new TrackerDashboard.Stories())
+    @set('stories', new Skyline.Stories())
   app: ->
     @get 'app'
   stories: ->
@@ -17,21 +17,21 @@ TrackerDashboard.Release = TrackerDashboard.Model.extend(
     cid: @cid
 )
 
-TrackerDashboard.Releases = Backbone.Collection.extend(
+Skyline.Releases = Backbone.Collection.extend(
   initialize: (models, options) ->
     @app = options.app
   projects: ->
     @app.projects()
 
-  model: TrackerDashboard.Release
+  model: Skyline.Release
   stories: ->
     groups = {}
     @each (r) =>
       r.stories().each (releaseStory) =>
         p = releaseStory.project()
         r.storiesAbove(releaseStory).each (s) =>
-          groups[r.id] ||= {projects: {}, total: new TrackerDashboard.Stories()}
-          groups[r.id].projects[p.id] ||= new TrackerDashboard.Stories()
+          groups[r.id] ||= {projects: {}, total: new Skyline.Stories()}
+          groups[r.id].projects[p.id] ||= new Skyline.Stories()
           groups[r.id].projects[p.id].add(s, silent: true)
           groups[r.id].total.add(s, silent: true)
     groups
