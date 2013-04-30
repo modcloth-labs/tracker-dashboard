@@ -16,11 +16,11 @@ $(function() {
   skyline.appView = new skyline.AppView({ app: skyline.app, el: $("#root") });
   
   if( $.cookie('metric') ) {
-    this.app.set( 'metric', $.cookie('metric') );
+    skyline.app.set( 'metric', $.cookie('metric') );
   }
   
   if( $.cookie('filter_tiny_items') ) {
-    this.app.set( 'filter_tiny_items', true );
+    skyline.app.set( 'filter_tiny_items', true );
   }
   
   skyline.app.fetch().then( function() {
