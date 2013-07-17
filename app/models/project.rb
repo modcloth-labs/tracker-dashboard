@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
   has_many :stories, :dependent => :delete_all
   has_many :labelings, :dependent => :delete_all
   has_many :labels, :through => :labelings
+  belongs_to :credentials
 
   scope :enabled, where(:enabled => true)
 
@@ -36,6 +37,7 @@ class Project < ActiveRecord::Base
   end
 
   def fetch!
+    credentials.update_attribute(:data_last_reloaded, Time.now)
     tracker_proj = Tracker::Project.find(tracker_id)
     iters = tracker_proj.iterations(:current_backlog)
     transaction do

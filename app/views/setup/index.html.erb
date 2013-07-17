@@ -14,6 +14,16 @@
       </div>
     </div>
 
+    <legend>Automatic update</legend>
+    <div class="control-group">
+      <%= f.label :reload_data_mins, "Automatically refresh data every N minutes", :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :reload_data_mins %> (0 to disable)
+        <br/>
+        (last updated <%= time_ago_in_words f.object.data_last_reloaded %> ago)
+      </div>
+    </div>
+
     <legend>Basic Auth Security (optional)</legend>
     <div class="control-group">
       <%= f.label :auth_user, "Username", :class => "control-label" %>

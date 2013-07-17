@@ -1,1 +1,12 @@
-<table class="dashboard-table" id="dashboard"></table>
+<% content_for :head do %>
+  <% if @credentials.reload_data_mins > 0 %>
+    <meta http-equiv="refresh" content="<%= @credentials.reload_data_mins * 60 %>">
+  <% end %>
+<% end %>
+<table class="dashboard-table" id="dashboard">
+  <tr>
+    <td>
+      <%= image_tag "/img/ajax-loader.gif" %>
+    </td>
+  </tr>
+</table>

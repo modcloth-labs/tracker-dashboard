@@ -11,14 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120185205) do
+ActiveRecord::Schema.define(:version => 20130717172445) do
 
   create_table "credentials", :force => true do |t|
     t.string   "token"
     t.string   "auth_user"
     t.string   "auth_password"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "reload_data_mins",   :default => 60, :null => false
+    t.datetime "data_last_reloaded"
   end
 
   create_table "iterations", :force => true do |t|

@@ -1,5 +1,5 @@
 class Credentials < ActiveRecord::Base
-  attr_accessible :auth_password, :auth_user, :token, :projects_attributes
+  attr_accessible :auth_password, :auth_user, :token, :projects_attributes, :reload_data_mins
   validates_presence_of :token
 
   after_save :fetch_projects!
@@ -17,5 +17,9 @@ class Credentials < ActiveRecord::Base
       dead_projects.delete(project)
     end
     dead_projects.map &:destroy
+  end
+
+  def should_update_data?
+    reload_data_mins > 0 && !data_last_reloaded || data_last_reloaded + reload_data_mins.minutes < Time.now
   end
 end
