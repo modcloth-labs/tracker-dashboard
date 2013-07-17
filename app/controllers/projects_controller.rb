@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @credentials.fetch_projects!
     Project.fetch!
     redirect_to :back
   end

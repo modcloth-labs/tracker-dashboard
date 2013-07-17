@@ -19,7 +19,7 @@
 /.rbenv-version
 
 /.idea
-/manifest.yml
+/manifest*.yml
 /public/assets
 /script/cfpush
 /vendor/cache
