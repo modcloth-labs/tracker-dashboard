@@ -13,9 +13,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <% unless ENV["NOLOGO"] %>
   <header>
     <div class="logo"></div>
   </header>
+  <% end %>
 
   <div class="container-fluid" id="root">
     <div class="navbar">
