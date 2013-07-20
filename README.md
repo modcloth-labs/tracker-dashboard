@@ -31,9 +31,7 @@ A database is required, but all the standard rails ones (sqlite3 mysql and postg
 ### CloudFoundry deployment
 
 	git clone
-	bundle install
-	bundle exec rake assets:precompile
-	vmc push --runtime ruby19
+	cf push
 
 ### Heroku deployment
 
@@ -44,8 +42,8 @@ A database is required, but all the standard rails ones (sqlite3 mysql and postg
 Automatically Updating
 ----------------------
 
-The data is not automatically updated unless you click update data.  For automatic updating,
-simply figure out how to schedule running the following task as often as you want:
+For automatic updating, you can enable auto updating in the web UI (which occasionally blocks web threads to do updates before returning),
+or figure out how to schedule running the following task as often as you want:
 
 	bundle exec rake load
 
