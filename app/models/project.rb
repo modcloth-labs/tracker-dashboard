@@ -50,7 +50,7 @@ class Project < ActiveRecord::Base
       iters.each do |i|
         i.to_iter(self).save!
       end
-      self.update_attributes!(:current_velocity => tracker_proj.current_velocity)
+      self.update_attributes!(:current_velocity => tracker_proj.current_velocity || 1)
     end
 
     iterations.reload
