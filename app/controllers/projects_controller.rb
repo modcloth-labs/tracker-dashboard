@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
       format.json do
         update_data if @credentials.should_update_data?
         render :json => {:projects =>
-                             Project.enabled.as_json(
+                             Project.enabled.includes([{:iterations => :stories}, {:stories => :labels}]).as_json(
                                  :include => [:iterations, :stories],
                                  :methods => [:enabled_label_ids]
                              ),

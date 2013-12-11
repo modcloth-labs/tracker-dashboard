@@ -118,12 +118,13 @@ header h3 {
 
 .navbar-header .lead {
   color: #FFFFFF;
-  padding: 8px 0px;
+  padding: 4px 0px;
 }
 
 p.lead {
   margin-bottom: 0;
   text-transform: capitalize;
+  font-size: 19px;
 }
 
 .progress-container {
@@ -276,3 +277,8 @@ select.metric {
 .nav input[type=checkbox] {
   margin: 9px 5px 0 0;
 }
+
+.navbar-inner {
+    padding: 0 5px !important;
+}
+
